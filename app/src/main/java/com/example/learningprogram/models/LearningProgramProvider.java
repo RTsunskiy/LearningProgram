@@ -1,5 +1,7 @@
 package com.example.learningprogram.models;
 
+import com.example.learningprogram.LectorSpinnerAdapter;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
