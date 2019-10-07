@@ -13,6 +13,19 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margin"/>
 
+    <Spinner
+        android:id="@+id/weeks_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin"/>
+
+    <TextView
+        android:id="@+id/week_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_margin="@dimen/default_margin"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

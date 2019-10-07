@@ -6,25 +6,26 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import java.util.List;
 
 public class LectorSpinnerAdapter extends BaseAdapter {
 
-    private final List<String> mLectors;
+    private final List<String> lectors;
 
-    public LectorSpinnerAdapter(List<String> mLectors) {
-        this.mLectors = mLectors;
+    public LectorSpinnerAdapter(@NonNull List<String> lectors) {
+        this.lectors = lectors;
     }
-
 
     @Override
     public int getCount() {
-        return mLectors.size();
+        return lectors.size();
     }
 
     @Override
-    public String getItem(int position) {
-        return mLectors.get(position);
+    public String getItem(int i) {
+        return lectors.get(i);
     }
 
     @Override
@@ -40,15 +41,15 @@ public class LectorSpinnerAdapter extends BaseAdapter {
             convertView.setTag(viewHolder);
         }
         ViewHolder holder = (ViewHolder) convertView.getTag();
-        holder.mLectorName.setText(getItem(position));
+        holder.lectorName.setText(getItem(position));
         return convertView;
     }
 
     private class ViewHolder {
-        private final TextView mLectorName;
+        private final TextView lectorName;
 
         private ViewHolder(View view) {
-            mLectorName = view.findViewById(android.R.id.text1);
+            lectorName = view.findViewById(android.R.id.text1);
         }
     }
 }

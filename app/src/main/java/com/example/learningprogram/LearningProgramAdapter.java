@@ -10,18 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.learningprogram.models.Lecture;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LearningProgramAdapter extends RecyclerView.Adapter<LearningProgramAdapter.LectureHolder> {
 
-    private List<Lecture> mLectures;
-
-    public void setmLectures(List<Lecture> mLectures) {
-        this.mLectures = mLectures == null ? null : new ArrayList<>(mLectures);
-    }
-
-
+    private List<Lecture> lectureList;
 
     @NonNull
     @Override
@@ -32,31 +27,35 @@ public class LearningProgramAdapter extends RecyclerView.Adapter<LearningProgram
 
     @Override
     public void onBindViewHolder(@NonNull LectureHolder holder, int position) {
-        Lecture lecture = mLectures.get(position);
-        holder.mNumber.setText(lecture.getmNumber());
-        holder.mDate.setText(lecture.getmDate());
-        holder.mTheme.setText(lecture.getmTheme());
-        holder.mLector.setText(lecture.getmLector());
+        Lecture lecture = lectureList.get(position);
+        holder.number.setText(lecture.getNumber());
+        holder.date.setText(new SimpleDateFormat("dd.MM.yyyy").format(lecture.getDate()));
+        holder.theme.setText(lecture.getTheme());
+        holder.lector.setText(lecture.getLector());
     }
 
     @Override
     public int getItemCount() {
-        return mLectures == null ? 0 : mLectures.size();
+        return lectureList == null ? 0 : lectureList.size();
+    }
+
+    public void setLectureList(List<Lecture> lecture) {
+        lectureList = lecture == null ? null : new ArrayList<>(lecture);
     }
 
     static class LectureHolder extends RecyclerView.ViewHolder {
 
-        private final TextView mNumber;
-        private final TextView mDate;
-        private final TextView mTheme;
-        private final TextView mLector;
+        private final TextView number;
+        private final TextView date;
+        private final TextView theme;
+        private final TextView lector;
 
         public LectureHolder(@NonNull View itemView) {
             super(itemView);
-            mNumber = itemView.findViewById(R.id.number);
-            mDate = itemView.findViewById(R.id.date);
-            mTheme = itemView.findViewById(R.id.theme);
-            mLector = itemView.findViewById(R.id.lector);
+            number = itemView.findViewById(R.id.number);
+            date = itemView.findViewById(R.id.date);
+            theme = itemView.findViewById(R.id.theme);
+            lector = itemView.findViewById(R.id.lector);
         }
     }
 }

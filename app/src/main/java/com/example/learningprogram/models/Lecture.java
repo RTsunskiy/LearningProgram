@@ -1,38 +1,42 @@
 package com.example.learningprogram.models;
 
+import android.annotation.SuppressLint;
+
 import androidx.annotation.NonNull;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Lecture {
-    private final String mNumber;
-    private final String mDate;
-    private final String mTheme;
-    private final String mLector;
+    private static final String patternDate = "dd.MM.yyyy";
 
-    public String getmNumber() {
-        return mNumber;
+    private final String number;
+    private final Date date;
+    private final String theme;
+    private final String lector;
+
+    public Lecture(@NonNull String number, @NonNull String date, @NonNull String theme, @NonNull String lector) throws ParseException {
+        this.number = number;
+        this.theme = theme;
+        this.lector = lector;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat(patternDate);
+        this.date = simpleDateFormat.parse(date);
     }
 
-    public String getmDate() {
-        return mDate;
+    public String getNumber() {
+        return number;
     }
 
-    public String getmTheme() {
-        return mTheme;
+    public Date getDate() {
+        return date;
     }
 
-    public String getmLector() {
-        return mLector;
+    public String getTheme() {
+        return theme;
     }
 
-    public Lecture(
-            @NonNull String mNumber,
-            @NonNull String mDate,
-            @NonNull String mTheme,
-            @NonNull String mLector)
-    {
-        this.mNumber = mNumber;
-        this.mDate = mDate;
-        this.mTheme = mTheme;
-        this.mLector = mLector;
+    public String getLector() {
+        return lector;
     }
 }
