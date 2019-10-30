@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">LearningProgram</string>
     <string name="all">Все</string>
+    <string name="failed_load">Не получилось</string>
 </resources>

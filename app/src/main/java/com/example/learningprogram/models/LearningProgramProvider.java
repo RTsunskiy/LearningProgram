@@ -42,13 +42,11 @@ public class LearningProgramProvider {
     private List<Lecture> mLectures;
 
     public List<Lecture> provideLecture () {
-        this.mLectures = loadLecturesFromWeb();
         return mLectures;
     }
 
         public List<String> provideLectors () {
         Set<String> lectorsSet = new HashSet<>();
-            Log.d("lectors", "provideLectors: " + mLectures.get(1));
         for (Lecture lecture : mLectures) {
             lectorsSet.add(lecture.getLector());
         }

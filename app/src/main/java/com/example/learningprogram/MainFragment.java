@@ -2,13 +2,13 @@ package com.example.learningprogram;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,7 +32,7 @@ import java.util.Map;
 
 public class MainFragment extends Fragment {
 
-    private LearningProgramProvider learningProgramProvider;
+    private LearningProgramProvider learningProgramProvider = new LearningProgramProvider();
     private static final int POSITION_ALL = 0;
     private RecyclerView recyclerView;
     private Spinner lectorsSpinner;
@@ -57,13 +57,6 @@ public class MainFragment extends Fragment {
 
         weekTextView = rootView.findViewById(R.id.week_number);
 
-        learningProgramProvider = new LearningProgramProvider();
-
-        initRecyclerView();
-        Log.d("lectors", "provideLectors: " + learningProgramProvider.loadLecturesFromWeb().get(0));
-        initSpinnerLectors();
-        initSpinnerWeeks();
-
         return rootView;
     }
 
@@ -77,6 +70,20 @@ public class MainFragment extends Fragment {
             }
         }
         return res;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        List<Lecture> lectures = learningProgramProvider.provideLecture();
+        if (lectures == null) {
+            new LoadLecturesTask(this).execute();
+        } else {
+            initRecyclerView(lectures);
+            initRecyclerView();
+            initSpinnerWeeks();
+            initSpinnerLectors();
+        }
     }
 
     private void initRecyclerView() {
@@ -203,10 +210,14 @@ public class MainFragment extends Fragment {
         @Override
         protected void onPostExecute(List<Lecture> lectures) {
             MainFragment fragment = mFragmentRef.get();
-
-            fragment.initRecyclerView();
-            fragment.initSpinnerLectors();
-            fragment.initSpinnerWeeks();
+            if (lectures == null) {
+                Toast.makeText(fragment.requireContext(), "Илюха Пидарас", Toast.LENGTH_SHORT).show();
+            } else {
+                fragment.initRecyclerView(lectures);
+                fragment.initRecyclerView();
+                fragment.initSpinnerLectors();
+                fragment.initSpinnerWeeks();
+            }
         }
     }
 
