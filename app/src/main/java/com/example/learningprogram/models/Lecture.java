@@ -1,42 +1,57 @@
 package com.example.learningprogram.models;
 
-import android.annotation.SuppressLint;
+
 
 import androidx.annotation.NonNull;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+import java.util.ArrayList;
+
+import java.util.List;
 
 public class Lecture {
     private static final String patternDate = "dd.MM.yyyy";
 
-    private final String number;
-    private final Date date;
-    private final String theme;
-    private final String lector;
+    private final String mNumber;
+    private final String mDate;
+    private final String mTheme;
+    private final String mLector;
+    private final List<String> mSubtopics;
 
-    public Lecture(@NonNull String number, @NonNull String date, @NonNull String theme, @NonNull String lector) throws ParseException {
-        this.number = number;
-        this.theme = theme;
-        this.lector = lector;
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat(patternDate);
-        this.date = simpleDateFormat.parse(date);
+    @JsonCreator
+    public Lecture(
+            @JsonProperty("number") String number,
+            @JsonProperty("date") @NonNull String date,
+            @JsonProperty("theme") @NonNull String theme,
+            @JsonProperty("lector") @NonNull String lector,
+            @JsonProperty("subtopics") @NonNull List<String> subtopics) {
+        mNumber = number;
+        mTheme = theme;
+        mDate = date;
+        mLector = lector;
+        mSubtopics = new ArrayList<>(subtopics);
     }
+
+
 
     public String getNumber() {
-        return number;
+        return mNumber;
     }
 
-    public Date getDate() {
-        return date;
+    public String getDate() {
+        return mDate;
     }
 
     public String getTheme() {
-        return theme;
+        return mTheme;
     }
 
     public String getLector() {
-        return lector;
+        return mLector;
     }
+
+    public List<String> getmSubtopics() { return mSubtopics; }
 }
