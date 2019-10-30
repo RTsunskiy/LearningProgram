@@ -91,7 +91,6 @@ public class LearningProgramProvider {
             final URL url = new URL(LECTURES_URL);
             URLConnection connection = url.openConnection();
             is = connection.getInputStream();
-            Log.d("hh", "loadLecturesFromWeb: " + is.toString());
             ObjectMapper mapper = new ObjectMapper();
             Lecture[] lectures = mapper.readValue(is, Lecture[].class);
             mLectures = Arrays.asList(lectures);
@@ -107,7 +106,7 @@ public class LearningProgramProvider {
                 }
             }
         }
-        return null;
+       return null;
     }
 }
 
