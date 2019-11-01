@@ -91,7 +91,6 @@ public class MainFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         LearningProgramAdapter adapter = new LearningProgramAdapter();
-        adapter.setLectureList(learningProgramProvider.provideLecture());
         DividerItemDecoration divider = new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(divider);
         recyclerView.setAdapter(adapter);
@@ -211,7 +210,7 @@ public class MainFragment extends Fragment {
         protected void onPostExecute(List<Lecture> lectures) {
             MainFragment fragment = mFragmentRef.get();
             if (lectures == null) {
-                Toast.makeText(fragment.requireContext(), "Илюха Пидарас", Toast.LENGTH_SHORT).show();
+                Toast.makeText(fragment.requireContext(), "Нет соединения", Toast.LENGTH_SHORT).show();
             } else {
                 fragment.initRecyclerView(lectures);
                 fragment.initRecyclerView();
