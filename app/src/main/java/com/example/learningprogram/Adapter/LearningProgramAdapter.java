@@ -47,9 +47,9 @@ public class LearningProgramAdapter extends RecyclerView.Adapter<LearningProgram
                 context.getSupportFragmentManager()
                         .beginTransaction()
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .addToBackStack(null)
                         .setCustomAnimations(R.anim.slide_in_left, R.anim.slide_in_right)
                         .replace(R.id.root_layout, DetailsFragment.newInstance(lecture))
-                        .addToBackStack(null)
                         .commit();
             }
         });

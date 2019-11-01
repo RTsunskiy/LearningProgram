@@ -6,8 +6,8 @@
     <dimen name="margin">10dp</dimen>
     <dimen name="padding">20dp</dimen>
     <dimen name="lector_number_string">20sp</dimen>
-    <dimen name="lector_name_tv">32sp</dimen>
-    <dimen name="date_string">9sp</dimen>
-    <dimen name="theme_string">48sp</dimen>
-    <dimen name="subtopic_string">50sp</dimen>
+    <dimen name="lector_name_tv">25sp</dimen>
+    <dimen name="date_string">14sp</dimen>
+    <dimen name="theme_string">30sp</dimen>
+    <dimen name="subtopic_string">35sp</dimen>
 </resources>
