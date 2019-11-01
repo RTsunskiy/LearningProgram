@@ -1,4 +1,4 @@
-package com.example.learningprogram;
+package com.example.learningprogram.View;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,12 +13,15 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.learningprogram.models.LearningProgramProvider;
-import com.example.learningprogram.models.Lecture;
+import com.example.learningprogram.Adapter.LearningProgramAdapter;
+import com.example.learningprogram.Adapter.LectorSpinnerAdapter;
+import com.example.learningprogram.Adapter.WeeksSpinnerAdapter;
+import com.example.learningprogram.Models.LearningProgramProvider;
+import com.example.learningprogram.Models.Lecture;
+import com.example.learningprogram.R;
 
 import java.lang.ref.WeakReference;
 import java.text.ParseException;
@@ -28,6 +31,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class MainFragment extends Fragment {
@@ -54,6 +58,8 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+        recyclerView = rootView.findViewById(R.id.learning_program_recycler);
 
         weekTextView = rootView.findViewById(R.id.week_number);
 
@@ -90,14 +96,12 @@ public class MainFragment extends Fragment {
         recyclerView = rootView.findViewById(R.id.learning_program_recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
-        LearningProgramAdapter adapter = new LearningProgramAdapter();
-        DividerItemDecoration divider = new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL);
-        recyclerView.addItemDecoration(divider);
+        LearningProgramAdapter adapter = new LearningProgramAdapter(getActivity());
         recyclerView.setAdapter(adapter);
     }
 
     private void initRecyclerView(List<Lecture> lectureList) {
-        LearningProgramAdapter adapter = new LearningProgramAdapter();
+        LearningProgramAdapter adapter = new LearningProgramAdapter(getActivity());
         adapter.setLectureList(lectureList);
         recyclerView.setAdapter(adapter);
     }
@@ -162,9 +166,9 @@ public class MainFragment extends Fragment {
                 for (Lecture lecture : learningProgramProvider.provideLecture()) {
                     Calendar calendar = Calendar.getInstance();
                     String date1 = lecture.getDate();
-                    Date date = null;
+                    Date date = new Date();
                     try {
-                        date = new SimpleDateFormat("dd/MM/yyyy").parse(date1);
+                        date = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(date1);
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }

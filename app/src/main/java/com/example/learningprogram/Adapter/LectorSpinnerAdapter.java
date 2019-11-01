@@ -1,4 +1,4 @@
-package com.example.learningprogram;
+package com.example.learningprogram.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;

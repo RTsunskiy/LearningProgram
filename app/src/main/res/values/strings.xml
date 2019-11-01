@@ -2,4 +2,7 @@
     <string name="app_name">LearningProgram</string>
     <string name="all">Все</string>
     <string name="failed_load">Не получилось</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

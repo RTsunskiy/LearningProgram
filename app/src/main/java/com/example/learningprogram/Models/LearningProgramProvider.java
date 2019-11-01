@@ -1,23 +1,13 @@
-package com.example.learningprogram.models;
+package com.example.learningprogram.Models;
 
-import android.os.AsyncTask;
-import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.learningprogram.LectorSpinnerAdapter;
-import com.example.learningprogram.MainActivity;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.ref.WeakReference;
 import java.net.URL;
 import java.net.URLConnection;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -63,9 +53,9 @@ public class LearningProgramProvider {
         Map<Integer, String> weeksMap = new TreeMap<>();
         for (String date : datesSet) {
             Calendar calendar = Calendar.getInstance();
-            Date date1 = null;
+            Date date1 = new Date();
             try {
-                date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+                date1 = new SimpleDateFormat("dd.MM.yyyy", Locale.ENGLISH).parse(date);
             } catch (ParseException e) {
                 e.printStackTrace();
             }

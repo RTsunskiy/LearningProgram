@@ -1,6 +1,9 @@
-package com.example.learningprogram.models;
+package com.example.learningprogram.Models;
 
 
+
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
@@ -12,7 +15,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 
-public class Lecture {
+public class Lecture implements Parcelable {
     private static final String patternDate = "dd.MM.yyyy";
 
     private final String mNumber;
@@ -54,4 +57,14 @@ public class Lecture {
     }
 
     public List<String> getmSubtopics() { return mSubtopics; }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+    }
 }

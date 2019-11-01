@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/lector_number_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/lector_number_string"
+        android:padding="@dimen/margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        tools:text="number" />
+
+    <TextView
+        android:id="@+id/lector_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/lector_name_tv"
+        android:padding="@dimen/margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_below="@id/lector_number_tv"
+        tools:text="name"/>
+
+
+    <TextView
+        android:id="@+id/theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/theme_string"
+        android:padding="@dimen/margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_below="@id/lector_name"
+        tools:text="name"/>
+
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/date_string"
+        android:padding="@dimen/margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        tools:text="name"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@id/theme"
+        android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/subtopic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/subtopic_string"
+        android:padding="@dimen/margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        tools:text="subtopic"/>
+
+    </ScrollView>
+
+
+</RelativeLayout>
+
