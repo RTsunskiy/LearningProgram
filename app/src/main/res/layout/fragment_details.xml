@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/backGround_cokor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -27,7 +28,7 @@
         android:textSize="@dimen/lector_name_tv"
         android:padding="@dimen/margin"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_below="@id/lector_number_tv"
+        app:layout_constraintTop_toBottomOf="@id/date"
         tools:text="name"/>
 
 
@@ -39,7 +40,7 @@
         android:textSize="@dimen/theme_string"
         android:padding="@dimen/margin"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_below="@id/lector_name"
+        app:layout_constraintTop_toBottomOf="@id/lector_name"
         tools:text="name"/>
 
 
@@ -49,13 +50,14 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/date_string"
         android:padding="@dimen/margin"
+        app:layout_constraintTop_toBottomOf="@id/lector_number_tv"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         tools:text="name"/>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_below="@id/theme"
-        android:layout_height="match_parent">
+        app:layout_constraintTop_toBottomOf="@id/theme"
+        android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/subtopic"
@@ -70,5 +72,5 @@
     </ScrollView>
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
